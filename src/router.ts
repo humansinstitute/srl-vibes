@@ -2,13 +2,6 @@
 
 const content = document.getElementById("content")!;
 const navLinks = document.querySelectorAll<HTMLAnchorElement>("nav a[data-section]");
-const backdrop = document.getElementById("backdrop")!;
-const heroContent = document.getElementById("hero-content")!;
-
-// ── Hero animation ──
-requestAnimationFrame(() => backdrop.classList.add("show"));
-setTimeout(() => heroContent.classList.add("rise"), 1500);
-
 // ── Copy-to-clipboard helper ──
 function fallbackCopy(text: string) {
   const temp = document.createElement("textarea");
@@ -113,6 +106,15 @@ function bindConfetti() {
   targets.forEach((el) => observer.observe(el));
 }
 
+// ── Hero animation (only present in the why section) ──
+function bindHero() {
+  const backdrop = content.querySelector("#backdrop");
+  const heroContent = content.querySelector("#hero-content");
+  if (!backdrop || !heroContent) return;
+  requestAnimationFrame(() => backdrop.classList.add("show"));
+  setTimeout(() => heroContent.classList.add("rise"), 1500);
+}
+
 // ── Section loader ──
 async function loadSection(section: string) {
   try {
@@ -132,6 +134,7 @@ async function loadSection(section: string) {
   // Bind interactive elements in newly loaded content
   bindCopyButtons();
   bindConfetti();
+  bindHero();
 }
 
 // Handle nav clicks
