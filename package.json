@@ -1,0 +1,14 @@
+{
+  "name": "vibe-group",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "bun run src/server.ts",
+    "dev": "bun run src/server.ts",
+    "build": "bun build src/router.ts --outdir=dist --minify"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "typescript": "^5.7"
+  }
+}

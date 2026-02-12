@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vibe Group</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+      background: #000;
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      color: #f5f5f5;
+    }
+
+    /* ── Toolbar ── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      gap: 0;
+      padding: 0 clamp(1rem, 4vw, 3rem);
+      height: 56px;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    nav .brand {
+      font-weight: 800;
+      font-size: 1.1rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-right: 2rem;
+      color: #fff;
+      text-decoration: none;
+    }
+
+    nav a[data-section] {
+      color: rgba(255, 255, 255, 0.55);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 0.4rem 1rem;
+      border-radius: 6px;
+      transition: color 0.2s, background 0.2s;
+    }
+
+    nav a[data-section]:hover {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    nav a[data-section].active {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    /* ── Content area ── */
+    #content {
+      padding-top: 56px;
+      min-height: 100vh;
+    }
+
+    /* ── Shared section styles (used by loaded fragments) ── */
+    .section {
+      min-height: 90vh;
+      padding: clamp(3rem, 6vw, 6rem) clamp(1.5rem, 8vw, 10rem);
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      justify-content: center;
+    }
+
+    .section h2 {
+      font-size: clamp(2.8rem, 5.6vw, 4.1rem);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: clamp(0.6rem, 2vw, 1.2rem);
+    }
+
+    .section p {
+      font-size: clamp(1.15rem, 2.4vw, 1.5rem);
+      max-width: 800px;
+      line-height: 1.65;
+      color: #dcdcdc;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-intro {
+      font-size: clamp(1rem, 2vw, 1.3rem);
+      color: rgba(255, 255, 255, 0.65);
+      max-width: 780px;
+    }
+
+    .section.dark  { background: #0a0a0a; }
+    .section.mid   { background: #111; }
+    .section.light { background: #f3f3f3; color: #111; }
+    .section.light p { color: #383838; }
+    .section.light .section-intro { color: rgba(0, 0, 0, 0.65); }
+
+    .error {
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    /* ── Prompt cards (reusable) ── */
+    .prompt-card {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 10px;
+      padding: 1rem 1.2rem;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      margin-top: 1rem;
+    }
+
+    .prompt-card code {
+      display: block;
+      white-space: pre-wrap;
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+      font-size: 1.05rem;
+      line-height: 1.5;
+      color: #f1f1f1;
+    }
+
+    .prompt-label {
+      font-size: 0.95rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.55);
+    }
+
+    .copy-btn {
+      position: absolute;
+      top: 0.7rem;
+      right: 0.7rem;
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      border-radius: 20px;
+      color: #fff;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 0.25rem 0.85rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .copy-btn:hover { background: rgba(255, 255, 255, 0.12); }
+
+    /* ── Light prompt card variant ── */
+    .prompt-card-light {
+      background: #fff;
+      border-color: rgba(0, 0, 0, 0.1);
+    }
+    .prompt-card-light code { color: #111; }
+    .prompt-card-light .prompt-label { color: rgba(0, 0, 0, 0.6); }
+    .prompt-card-light .copy-btn { border-color: rgba(0, 0, 0, 0.4); color: #111; }
+    .prompt-card-light .copy-btn:hover { background: rgba(0, 0, 0, 0.08); }
+
+    /* ── Hero stage ── */
+    .stage {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    .backdrop {
+      position: absolute;
+      inset: 0;
+      background: url("/assets/rick.png") center center / cover no-repeat;
+      z-index: 0;
+      filter: brightness(0.95);
+      opacity: 0;
+      transition: opacity 4s ease;
+    }
+
+    .backdrop.show { opacity: 1; }
+
+    .message {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      z-index: 2;
+      text-align: center;
+      font-size: clamp(4rem, 10vw, 9rem);
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      line-height: 1.05;
+    }
+
+    .message span { display: block; }
+
+    .message .hero-content {
+      width: 80vw;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+      transform: translateY(8vh);
+      transition: transform 0.8s ease;
+    }
+
+    .message .hero-content.rise { transform: translateY(0); }
+
+    .logo {
+      display: block;
+      width: clamp(140px, 22vw, 280px);
+      margin: 0 auto 1rem;
+      filter: drop-shadow(0 0 12px rgba(0, 0, 0, 0.45));
+    }
+
+    /* ── Images ── */
+    .image-fill {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50vh;
+    }
+
+    .image-fill img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+      filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.35));
+    }
+
+    .wingman-link {
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.35s ease;
+    }
+    .wingman-link:hover { transform: translateY(-8px); }
+
+    /* ── Takeaway text ── */
+    .takeaway {
+      font-weight: 700;
+      font-style: italic;
+      margin-top: 1.5rem;
+      font-size: clamp(1.6rem, 3.2vw, 2.4rem);
+    }
+
+    /* ── Step list ── */
+    .step-list {
+      list-style: decimal;
+      margin-left: 1.4rem;
+      display: grid;
+      gap: 0.7rem;
+      font-size: clamp(1.1rem, 2.3vw, 1.5rem);
+    }
+
+    .section.light .step-list { color: #1f1f1f; }
+    .step-list li::marker { font-weight: 700; }
+
+    /* ── Congrats ── */
+    .congrats { min-height: 80vh; }
+
+    /* ── Gamify visual ── */
+    .gamify-visual {
+      flex-direction: column;
+      gap: 0.9rem;
+      align-items: flex-start;
+    }
+
+    .streak-callout {
+      background: rgba(0, 0, 0, 0.65);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 999px;
+      padding: 0.45rem 1.2rem;
+      font-size: 1.2rem;
+      letter-spacing: 0.05em;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    /* ── Where Next grid ── */
+    .where-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: clamp(1rem, 3vw, 2rem);
+      margin-top: clamp(1.5rem, 3vw, 2.5rem);
+    }
+
+    .where-card {
+      padding: clamp(0.5rem, 1.5vw, 1rem);
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.02);
+      position: relative;
+      text-decoration: none;
+    }
+
+    .where-card::before {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #3cba92, #0ba360);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 0;
+    }
+
+    .where-card:hover::before { opacity: 1; }
+
+    .where-card-inner {
+      position: relative;
+      z-index: 1;
+      border-radius: 12px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    .where-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ── Section footer ── */
+    .section-footer {
+      padding: 2.5rem clamp(1.5rem, 8vw, 10rem);
+      background: #050505;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #9c9c9c;
+      letter-spacing: 0.05em;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .footer-links {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+    }
+
+    .footer-links a {
+      color: #9c9c9c;
+      text-decoration: none;
+      padding: 0 1rem;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: #fff; }
+    .footer-links .divider { color: #555; }
+
+    /* ── Confetti ── */
+    #confetti-canvas {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      width: 100vw;
+      height: 100vh;
+      z-index: 200;
+    }
+
+    /* ── Two-col layout helper ── */
+    .cols {
+      display: flex;
+      gap: clamp(2rem, 6vw, 5rem);
+      align-items: center;
+    }
+
+    .cols > * { flex: 1 1 50%; }
+
+    @media (max-width: 768px) {
+      nav { flex-wrap: wrap; height: auto; padding: 0.5rem 1rem; gap: 0.25rem; }
+      nav .brand { width: 100%; margin-bottom: 0.3rem; }
+      #content { padding-top: 90px; }
+      .cols { flex-direction: column; text-align: center; }
+      .message .hero-content { width: 95vw; }
+      .where-grid { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+    }
+  </style>
+</head>
+<body>
+  <div class="stage" id="stage">
+    <div class="backdrop" id="backdrop" aria-hidden="true"></div>
+    <div class="message">
+      <div class="hero-content" id="hero-content">
+        <img src="/assets/logo.png" alt="Other Stuff Logo" class="logo" />
+        <span>NOW YOU'RE</span>
+        <span>VIBE CODING</span>
+      </div>
+    </div>
+  </div>
+
+  <nav id="navbar">
+    <a class="brand" href="#why" data-section="why">Vibe Group</a>
+    <a href="#why"         data-section="why">Why</a>
+    <a href="#get-started" data-section="get-started">Get Started</a>
+    <a href="#build"       data-section="build">Build</a>
+    <a href="#go-further"  data-section="go-further">Go Further</a>
+  </nav>
+
+  <div id="content"></div>
+
+  <script src="/src/router.ts" type="module"></script>
+</body>
+</html>
