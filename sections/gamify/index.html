@@ -1,55 +1,8 @@
-<!-- Take it mobile -->
-<section class="section light cols">
-  <div class="image-fill">
-    <img src="/assets/mobile-cropped.gif" alt="Mobile app preview" style="border-radius: 18px; box-shadow: 0 20px 40px rgba(0,0,0,0.3);" />
-  </div>
-  <div>
-    <h2>Take it mobile</h2>
-    <p class="section-intro">Hand the experience to your phone so you can keep building on the move.</p>
-    <ol class="step-list">
-      <li>Click the avatar in the top right</li>
-      <li>Select 'Show Login QR'</li>
-      <li>Scan this with your phone camera to open!</li>
-    </ol>
-  </div>
-</section>
-
-<!-- Mobile dev congrats -->
-<section class="section dark congrats" data-confetti style="text-align: center;">
-  <h2>Now you're a mobile app developer!</h2>
-</section>
-
-<!-- Kanban -->
-<section class="section mid cols">
-  <div>
-    <h2>Kanban Board</h2>
-    <p class="section-intro">Some people like a post it note. No judgement, you'd be surprised the amount of GDP that relies on small pieces of coloured paper on a wall. If you love colourful squares with weak glue, we've got your back!</p>
-    <div class="prompt-card">
-      <div class="prompt-label">Setup a Kanban Board</div>
-      <button class="copy-btn" data-copy="This is cool but I would like an option to view this list like Kanban board where each column is the status of the task? I should be able to move the task status by dragging the task into a new column. Can I have a switch next to archive that lets me flip between the two views list and kanban?">Copy</button>
-      <code>This is cool but I would like an option to view this list like Kanban board where each column is the status of the task? I should be able to move the task status by dragging the task into a new column. Can I have a switch next to archive that lets me flip between the two views list and kanban?</code>
-    </div>
-    <div class="prompt-card">
-      <div class="prompt-label">Some potential bugfixes but lets see</div>
-      <button class="copy-btn" data-copy="Dragging and dropping updates the status but is not refreshing the view. The board should refresh after each action. Can we make this refresh automatically please.">Copy</button>
-      <code>Dragging and dropping updates the status but is not refreshing the view. The board should refresh after each action. Can we make this refresh automatically please.</code>
-    </div>
-    <div class="prompt-card">
-      <div class="prompt-label">Modal editing</div>
-      <button class="copy-btn" data-copy="On kanaban I should still be able to click on a todo to pull up and edit the details. Perhaps open these in a modal?">Copy</button>
-      <code>On kanaban I should still be able to click on a todo to pull up and edit the details. Perhaps open these in a modal?</code>
-    </div>
-  </div>
-  <div class="image-fill">
-    <img src="/assets/kanban.png" alt="Kanban board preview" />
-  </div>
-</section>
-
 <!-- Timeline -->
 <section class="section dark cols">
   <div>
     <h2>Timeline Grouping</h2>
-    <p class="section-intro">Time-box every move to calm the chaos. Lists and priorities can be deciding. Sometimes you need to focus on what matters now.</p>
+    <p class="section-intro">Time-box every move to calm the chaos. Lists and priorities can be deceiving. Sometimes you need to focus on what matters now.</p>
     <p>Time is important, lots of todos don't tell you everything, so bucket them by time and drag tasks into now, week, and month buckets for quick prioritisation.</p>
   </div>
   <div>
@@ -78,7 +31,12 @@ When I drag a todo into a particular time bucket assign it to the last possible 
 <section class="section mid cols">
   <div>
     <h2>Gamify</h2>
-    <p class="section-intro">Make progress addictive so motivation shows up daily. Visualize momentum and streaks so you never lose sight of effort. Reward tiny wins until they become instinct.</p>
+    <p class="section-intro">Make progress addictive so motivation shows up daily.</p>
+    <span class="streak-callout">5 Days!</span>
+    <img src="/assets/gamify.png" alt="Gamify interface reference" style="width: 100%; margin-top: 1rem; filter: drop-shadow(0 12px 28px rgba(0,0,0,0.35));" />
+  </div>
+  <div>
+    <p>Visualize momentum and streaks so you never lose sight of effort. Reward tiny wins until they become instinct.</p>
     <div class="prompt-card">
       <div class="prompt-label">Daily Heatmap</div>
       <button class="copy-btn" data-copy="I want a GitHub-style completion tracker that shows a full year's grid (horizontal scroll) of every day and whether a task was ticked off. The greener the square, the more tasks completed that day.">Copy</button>
@@ -95,8 +53,36 @@ When I drag a todo into a particular time bucket assign it to the last possible 
       <code>Next to the GitHub-style heatmap, show a live example streak card that displays today's streak count, longest streak, and a simple sparkline of the last 14 days.</code>
     </div>
   </div>
-  <div class="image-fill gamify-visual">
-    <span class="streak-callout">5 Days!</span>
-    <img src="/assets/gamify.png" alt="Gamify interface reference" />
+</section>
+
+<!-- Your Ideas -->
+<section class="section light">
+  <h2>Your ideas?</h2>
+  <p class="section-intro">The app is yours now. Here are some directions you could take it — just describe what you want and let the agent build it.</p>
+  <div class="ideas-grid">
+    <div class="idea-card">
+      <h3>Task Templates</h3>
+      <p>Create reusable templates for recurring tasks — weekly reviews, daily stand-ups, onboarding checklists.</p>
+    </div>
+    <div class="idea-card">
+      <h3>Project Boards</h3>
+      <p>Group todos by project with tags and filters. Track progress across multiple workstreams at once.</p>
+    </div>
+    <div class="idea-card">
+      <h3>Sales Tracker</h3>
+      <p>Turn your todo app into a lightweight CRM — track leads, follow-ups, and conversion stages.</p>
+    </div>
+    <div class="idea-card">
+      <h3>Team Dashboards</h3>
+      <p>Add shared views so a team can see who's working on what, blockers, and weekly velocity.</p>
+    </div>
+    <div class="idea-card">
+      <h3>AI Summaries</h3>
+      <p>Get daily or weekly digests of what you completed, what's overdue, and what to focus on next.</p>
+    </div>
+    <div class="idea-card">
+      <h3>Custom Fields</h3>
+      <p>Add your own fields — budget, client name, effort estimate — and filter or sort by them.</p>
+    </div>
   </div>
 </section>

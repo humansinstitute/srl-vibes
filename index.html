@@ -45,13 +45,14 @@
     nav a[data-section] {
       color: rgba(255, 255, 255, 0.55);
       text-decoration: none;
-      font-size: 0.85rem;
+      font-size: 0.75rem;
       font-weight: 600;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.04em;
       text-transform: uppercase;
-      padding: 0.4rem 1rem;
+      padding: 0.35rem 0.65rem;
       border-radius: 6px;
       transition: color 0.2s, background 0.2s;
+      white-space: nowrap;
     }
 
     nav a[data-section]:hover {
@@ -339,6 +340,34 @@
       display: block;
     }
 
+    /* ── Ideas grid ── */
+    .ideas-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: clamp(1rem, 2.5vw, 1.8rem);
+      margin-top: clamp(1.5rem, 3vw, 2.5rem);
+    }
+
+    .idea-card {
+      background: rgba(0, 0, 0, 0.04);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      border-radius: 12px;
+      padding: clamp(1rem, 2vw, 1.5rem);
+    }
+
+    .idea-card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: #111;
+    }
+
+    .idea-card p {
+      font-size: 0.95rem;
+      line-height: 1.5;
+      color: #555;
+    }
+
     /* ── Section footer ── */
     .section-footer {
       padding: 2.5rem clamp(1.5rem, 8vw, 10rem);
@@ -398,16 +427,21 @@
       .cols { flex-direction: column; text-align: center; }
       .message .hero-content { width: 95vw; }
       .where-grid { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
+      .ideas-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
   <nav id="navbar">
     <a class="brand" href="#why" data-section="why">Speedrun: Lite</a>
-    <a href="#why"         data-section="why">Why</a>
-    <a href="#get-started" data-section="get-started">Get Started</a>
-    <a href="#build"       data-section="build">Build</a>
-    <a href="#go-further"  data-section="go-further">Go Further</a>
+    <a href="#why"              data-section="why">Why</a>
+    <a href="#getting-setup"    data-section="getting-setup">Setup</a>
+    <a href="#the-plan"         data-section="the-plan">The Plan</a>
+    <a href="#replace-kanbans"  data-section="replace-kanbans">Kanbans!</a>
+    <a href="#gamify"           data-section="gamify">Gamify</a>
+    <a href="#sneak-peak"       data-section="sneak-peak">Agents</a>
+    <a href="#take-it-home"     data-section="take-it-home">Ship It!</a>
+    <a href="#where-next"       data-section="where-next">Next</a>
   </nav>
 
   <div id="content"></div>
