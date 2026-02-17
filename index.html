@@ -247,6 +247,17 @@
       filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.35));
     }
 
+    .ai-meme-fill {
+      min-height: 65vh;
+      margin-top: 1.2rem;
+    }
+
+    .ai-meme-fill img {
+      width: 150%;
+      max-width: 1200px;
+      height: auto;
+    }
+
     .wingman-link {
       text-decoration: none;
       color: inherit;
@@ -258,7 +269,7 @@
     .takeaway {
       font-weight: 700;
       font-style: italic;
-      margin-top: 1.5rem;
+      margin-top: 5.25rem;
       font-size: clamp(1.6rem, 3.2vw, 2.4rem);
     }
 
@@ -273,6 +284,63 @@
 
     .section.light .step-list { color: #1f1f1f; }
     .step-list li::marker { font-weight: 700; }
+
+    /* ── Spectrum line ── */
+    .spectrum {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .spectrum-line {
+      position: relative;
+      height: 2px;
+      background: linear-gradient(90deg, #f4d35e, #ee964b, #d1495b);
+      border-radius: 999px;
+    }
+
+    .spectrum-labels {
+      display: flex;
+      justify-content: space-between;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .spectrum-images {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+
+    .spectrum-images img {
+      width: clamp(180px, 30vw, 270px);
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+    }
+
+    #why-use-ai.why-ai-section {
+      gap: clamp(5rem, 12vw, 14rem);
+    }
+
+    #why-use-ai .why-ai-copy h2 {
+      margin-bottom: clamp(2rem, 4vw, 3.5rem);
+    }
+
+    #why-use-ai .why-ai-visual {
+      padding-top: 0;
+    }
+
+    #why-use-ai .why-ai-visual img {
+      width: 150%;
+      max-width: none;
+      height: auto;
+    }
 
     /* ── Congrats ── */
     .congrats { min-height: 80vh; }
@@ -426,7 +494,8 @@
       nav .brand { width: 100%; margin-bottom: 0.3rem; }
       #content { padding-top: 90px; }
       .cols { flex-direction: column; text-align: center; }
-      .message .hero-content { width: 95vw; }
+      #why-use-ai .why-ai-visual img { width: 100%; max-width: 100%; }
+    .message .hero-content { width: 95vw; }
       .where-grid { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); }
       .ideas-grid { grid-template-columns: 1fr; }
     }
@@ -436,6 +505,7 @@
   <nav id="navbar">
     <a class="brand" href="#why" data-section="why">Speedrun: Lite</a>
     <a href="#why"              data-section="why">Why</a>
+    <a href="#ai-overview"      data-section="ai-overview">AI Overview</a>
     <a href="#getting-setup"    data-section="getting-setup">Setup</a>
     <a href="#the-plan"         data-section="the-plan">The Plan</a>
     <a href="#replace-kanbans"  data-section="replace-kanbans">Kanbans!</a>
@@ -447,6 +517,6 @@
 
   <div id="content"></div>
 
-  <script src="/src/router.ts" type="module"></script>
+  <script src="/src/router.js" type="module"></script>
 </body>
 </html>
