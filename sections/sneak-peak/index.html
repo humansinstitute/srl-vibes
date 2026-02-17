@@ -2,8 +2,12 @@
 <section class="section dark" style="text-align: center;">
   <h2>Sneak Peak — Automation with Agents</h2>
   <p class="section-intro" style="margin-left: auto; margin-right: auto;">It's great that Wingman can stand up an app, but the goal is to let it join the business. Point it at real tasks and invite it to add value where teams feel pressure.</p>
-  <p style="max-width: 800px; margin: 0 auto; color: #dcdcdc;">For this next task we're going to use a goose agent, not to code, but to follow a process and give you a daily summary of your tasks, like a hard working assistant!</p>
+  <p style="max-width: 800px; margin: 0 auto; color: #dcdcdc;">For this next task we're going to use an AI agent, not to code, but to follow a process and give you a daily summary of your tasks, like a hard working assistant!</p>
 </section>
+
+<!-- SETUP - WE NEED A SECTION HERE TO GIT CLONE THE AGENT -->
+
+<!-- SETUP - WE NEED A SECTION HERE ON DELEGATION -->
 
 <!-- Agent Feedback -->
 <section class="section mid cols">
@@ -16,18 +20,18 @@
       <div class="prompt-label">Agent feedback</div>
       <button class="copy-btn" data-copy="I want you to do three things in succession ensuring that each is done before you move on. Do not use sub agents.
 
-1. Review the API in docs/agent_api_spec.md which will tell you how to read my todos and update summaries, these are two seperate api calls.
+1. Review the agent conect spec in the conenct json which will tell you how to read my todos and update summaries.
 
-2. Please read my current todos for my logged in id/npub is: ------ the app is on PORT --------.
+2. Please read my current todos for ownerPubkey.
 
-3. Please review all my upcoming todos, and POST back a summary a daily and weekly summary for me to review in the app.">Copy</button>
+3. Please review all my upcoming todos, and write back daily summary for me to review in the app.">Copy</button>
       <code>I want you to do three things in succession ensuring that each is done before you move on. Do not use sub agents.
 
-1. Review the API in docs/agent_api_spec.md which will tell you how to read my todos and update summaries, these are two seperate api calls.
+1. Review the agent conect spec in the conenct json which will tell you how to read my todos and update summaries.
 
-2. Please read my current todos for my logged in id/npub is: ------ the app is on PORT --------.
+2. Please read my current todos for ownerPubkey.
 
-3. Please review all my upcoming todos, and POST back a summary a daily and weekly summary for me to review in the app.</code>
+3. Please review all my upcoming todos, and write back daily summary for me to review in the app.</code>
     </div>
   </div>
 </section>
@@ -43,24 +47,20 @@
       <div class="prompt-label">Agent Planning</div>
       <button class="copy-btn" data-copy='Task (do not use sub agents)
 
-1. Review the api spec in docs/agent_api_spec.md
+1. Review the agentconect.md
 2. Write a new set of 5 for tasks for a project with realistic deadlines to increase sales performance for a new training project by including the tag "Project: Sales".
-3. Ensure all tasks are submitted to the todo app using CURL.
+3. Ensure all tasks are submitted to superbased. 
 
 Keep titles short, only add project tag no other.
 
-Port: <Insert the number from our URL>
-NPUB: <insert NPUB>'>Copy</button>
       <code>Task (do not use sub agents)
 
-1. Review the api spec in docs/agent_api_spec.md
+1. Review the agentconect.md
 2. Write a new set of 5 for tasks for a project with realistic deadlines to increase sales performance for a new training project by including the tag "Project: Sales".
-3. Ensure all tasks are submitted to the todo app using CURL.
+3. Ensure all tasks are submitted to superbased. 
 
 Keep titles short, only add project tag no other.
-
-Port: &lt;Insert the number from our URL&gt;
-NPUB: &lt;insert NPUB&gt;</code>
+</code>
     </div>
   </div>
 </section>
