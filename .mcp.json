@@ -1,0 +1,16 @@
+{
+  "mcpServers": {
+    "wingman": {
+      "type": "stdio",
+      "command": "bun",
+      "args": [
+        "run",
+        "/Users/mini/code/wingmen/src/mcp/stdio-server.ts"
+      ],
+      "env": {
+        "WINGMAN_URL": "http://localhost:3021",
+        "SESSION_ID": "749de679-32c8-4375-82cb-9bcdf3fe26dd"
+      }
+    }
+  }
+}

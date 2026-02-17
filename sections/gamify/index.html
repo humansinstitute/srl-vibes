@@ -3,7 +3,6 @@
   <div>
     <h2>Timeline Grouping</h2>
     <p class="section-intro">Time-box every move to calm the chaos. Lists and priorities can be deceiving. Sometimes you need to focus on what matters now.</p>
-    <p>Time is important, lots of todos don't tell you everything, so bucket them by time and drag tasks into now, week, and month buckets for quick prioritisation.</p>
   </div>
   <div>
     <div class="prompt-card">
@@ -44,8 +43,8 @@ When I drag a todo into a particular time bucket assign it to the last possible 
     </div>
     <div class="prompt-card">
       <div class="prompt-label">Task streak</div>
-      <button class="copy-btn" data-copy='Track a daily streak: every day I complete at least one task, extend the streak; if I miss a day, reset it. Surface the streak prominently and retain the "best yet" streak. Make sure the SQLite data model captures the data needed for these streak calculations.'>Copy</button>
-      <code>Track a daily streak: every day I complete at least one task, extend the streak; if I miss a day, reset it. Surface the streak prominently and retain the "best yet" streak. Make sure the SQLite data model captures the data needed for these streak calculations.</code>
+      <button class="copy-btn" data-copy='Track a daily streak: every day I complete at least one task, extend the streak; if I miss a day, reset it. Surface the streak prominently and retain the "best yet" streak. Calculate the streak from local data.'>Copy</button>
+      <code>Track a daily streak: every day I complete at least one task, extend the streak; if I miss a day, reset it. Surface the streak prominently and retain the "best yet" streak. Calculate the streak from local data.</code>
     </div>
     <div class="prompt-card">
       <div class="prompt-label">Example streak UI</div>
@@ -58,7 +57,8 @@ When I drag a todo into a particular time bucket assign it to the last possible 
 <!-- Your ideas -->
 <section class="section light">
   <h2>Your ideas?</h2>
-  <p class="section-intro">The app is yours now. Here are some directions you could take it — just describe what you want and let the agent build it.</p>
+  <p class="section-intro">The app is yours. Here are some directions you could take it.</p>
+  <p class="section-intro">Just remember, describe what you want and let the agent build it.</p>
   <div class="ideas-grid">
     <div class="idea-card">
       <h3>Task Templates</h3>
@@ -73,18 +73,30 @@ When I drag a todo into a particular time bucket assign it to the last possible 
       <p>Turn your todo app into a lightweight CRM — track leads, follow-ups, and conversion stages.</p>
     </div>
     <div class="idea-card">
-      <h3>Team Dashboards</h3>
-      <p>Add shared views so a team can see who's working on what, blockers, and weekly velocity.</p>
+      <h3>Dashboards</h3>
+      <p>Add dashbaords of performance across a team can see who's working on what, blockers, and weekly velocity.</p>
     </div>
     <div class="idea-card">
-      <h3>AI Summaries</h3>
-      <p>Get daily or weekly digests of what you completed, what's overdue, and what to focus on next.</p>
+      <h3>Metrics</h3>
+      <p>Get daily or weekly metric of what you completed, what's overdue, and performance in categories.</p>
     </div>
     <div class="idea-card">
       <h3>Custom Fields</h3>
       <p>Add your own fields — budget, client name, effort estimate — and filter or sort by them.</p>
     </div>
   </div>
+</section>
+
+<!-- Guiding Principles -->
+<section class="section mid" style="text-align:center; align-items:center;">
+  <h2>Guiding Principles</h2>
+  <ol style="list-style:decimal; text-align:left; display:inline-block; font-size:clamp(1.1rem,2.3vw,1.5rem); line-height:2; padding-left:1.4rem;">
+    <li>Guide them to the goal, don't one shot it</li>
+    <li>Play with how much rope you give it and test after</li>
+    <li>Think about how it wakes up</li>
+    <li>Make sure you tell it what it needs to know</li>
+    <li>Don't overload yourself!</li>
+  </ol>
 </section>
 
 <!-- Footer -->
